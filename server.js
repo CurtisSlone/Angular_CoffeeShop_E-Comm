@@ -12,8 +12,8 @@ const enableHttps = false;
 const ssloptions = {}
 
 if (enableHttps) {
-    ssloptions.cert =  fs.readFileSync("./ssl/sportsstore.crt");
-    ssloptions.key = fs.readFileSync("./ssl/sportsstore.pem");
+    ssloptions.cert =  fs.readFileSync("./ssl/coffeeshop.crt");
+    ssloptions.key = fs.readFileSync("./ssl/coffeeshop.pem");
 }
 
 const app = express();
@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 app.use(auth);
 app.use("/api", router);
 app.use(history());
-app.use("/", express.static("./dist/SportsStore"));
+app.use("/", express.static("./dist/CofeeShop"));
 
-app.listen(8080, 
+app.listen(80, 
     () => console.log("HTTP Server running on port 80"));
 
 if (enableHttps) {

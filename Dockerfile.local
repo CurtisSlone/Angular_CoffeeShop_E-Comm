@@ -1,0 +1,19 @@
+FROM node:12.15.0
+
+RUN mkdir -p /usr/src/coffeeshop
+
+COPY dist/CofeeShop /usr/src/coffeeshop/dist/coffeeshop
+COPY ssl /usr/src/coffeeshop/ssl
+
+COPY authMiddleware.js /usr/src/coffeeshop/
+COPY serverdata.json /usr/src/coffeeshop/
+COPY server.js /usr/src/coffeeshop/server.js
+COPY deploy-package.json /usr/src/coffeeshop/package.json
+
+WORKDIR /usr/src/coffeeshop
+
+RUN npm install
+
+EXPOSE 80
+
+CMD ["node", "server.js"]
