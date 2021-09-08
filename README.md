@@ -20,5 +20,6 @@ ng build --prod
 
 ### Dockerize (requires Docker and cli tools)
 docker . -t coffeeshop -f Dockerfile
+
 docker run -p 80:80 coffeeshop
 
